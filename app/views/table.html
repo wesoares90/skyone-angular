@@ -1,0 +1,61 @@
+<div class="container-fluid">
+	<!-- Example DataTables Card-->
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fa fa-table"></i> Data Table Example
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6">
+							<label>
+								Search:
+								<input type="search" class="form-control form-control-sm" ng-model="searchFish">
+							</label>							
+						</div>
+						<div class="col-md-6">
+							<select ng-model="myselect" class="form-control" ng-change="main.viewMore(myselect)" ng-init='1'>
+						        <option value="20" selected="selected">20</option>
+						        <option value="40">40</option>
+						        <option value="85">80</option>
+						        <option value="160">160</option>
+						        <option value="todos">Todos</option>
+						     </select>							
+						</div>						
+					</div>					
+					<div class="row">					
+						<table class="table table-bordered" id="dataTable" cellspacing="0">
+							<thead>
+								<tr>
+									<th>
+										<a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+											Id
+										</a>
+									</th>
+									<th>
+										<a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+											Title
+										</a>
+									</th>
+									<th>
+										<a href="#" ng-click="sortType = 'url'; sortReverse = !sortReverse">
+											Url
+										</a>
+									</th>																		
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="row in main.rowCollection | orderBy:sortType:sortReverse | filter:searchFish  | limitTo:main.pageSize">
+									<td>{{row.id}}</td>
+									<td>{{row.title}}</td>
+									<td>{{row.url}}</td>
+								</tr>
+							</tbody>
+						</table>			
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
