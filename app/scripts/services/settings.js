@@ -8,13 +8,25 @@
  * Service in the testeSkyoneApp.
  */
 angular.module('testeSkyoneApp')
-  .service('settings', function () {
+  .service('settings', function ($filter) {
     
     var $public = this;
+    
+  	$public.limitView = function(input){
 
-    $public.config = {
-    	urlRest: 'www.rola.com'
-    }
+  		var number = $filter('limitPage')(input);
 
+  		return number;
+  	};
+
+  	$public.normalizeData = function (input) {
+
+  		var data = {
+  			title: input.iTitle.$modelValue, 
+  			url: input.iUrl.$modelValue
+  		};
+
+  		return data;
+  	};
 
   });

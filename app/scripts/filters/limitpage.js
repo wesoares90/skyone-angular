@@ -12,21 +12,21 @@ angular.module('testeSkyoneApp')
 .filter('limitPage', function () {
 	return function (input) {
 	  
-		var limit = '';
+		var limit = '_limit=';
 
 		switch (input) {
-			case undefined:
-				limit  = '?_start=1&_limit=' + 20;
+			case null:
+				limit  += 20;
 				break;
 			case 'todos':
 				limit = ''
 				break;
 			default:
-				limit  = '?_start=1&_limit=' + input;
+				limit  += input;
 				break;
-		}
+		};
 
-		return limit;
+		return  limit;
 
 
 	};

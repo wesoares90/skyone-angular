@@ -3,29 +3,28 @@
 	<div class="card mb-3">
 		<div class="card-header">
 			<i class="fa fa-table"></i> Data Table Example
+			<button class="btn btn-primary new-photo" data-toggle="modal" data-target="#modal-new" type="button" ><i class="fa fa-edit" aria-hidden="true"></i> New photo</button>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
 				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-6">
-							<label>
-								Search:
-								<input type="search" class="form-control form-control-sm" ng-model="searchFish">
-							</label>							
+					<div class="row controls">
+						<div class="col-md-9">
+							<input type="search" placeholder="Search:" class="form-control" ng-model="searchFish">
 						</div>
-						<div class="col-md-6">
-							<select ng-model="myselect" class="form-control" ng-change="main.viewMore(myselect)" ng-init='1'>
-						        <option value="20" selected="selected">20</option>
-						        <option value="40">40</option>
-						        <option value="85">80</option>
-						        <option value="160">160</option>
-						        <option value="todos">Todos</option>
-						     </select>							
-						</div>						
-					</div>					
+						<div class="col-md-3">
+							<select ng-model="myselect" class="form-control" ng-change="main.viewMore(myselect)">
+								<option value="20" selected="selected">20</option>
+								<option value="40">40</option>
+								<option value="85">80</option>
+								<option value="160">160</option>
+								<option value="todos">Todos</option>
+							</select>
+						</div>
+					</div>										
 					<div class="row">					
-						<table class="table table-bordered" id="dataTable" cellspacing="0">
+						<div class="col-md-12">
+							<table class="table table-bordered" id="dataTable" cellspacing="0">
 							<thead>
 								<tr>
 									<th>
@@ -42,17 +41,45 @@
 										<a href="#" ng-click="sortType = 'url'; sortReverse = !sortReverse">
 											Url
 										</a>
-									</th>																		
+									</th>
+									<th>
+										<a href="#">
+											Option
+										</a>
+									</th>																						
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="row in main.rowCollection | orderBy:sortType:sortReverse | filter:searchFish  | limitTo:main.pageSize">
-									<td>{{row.id}}</td>
-									<td>{{row.title}}</td>
-									<td>{{row.url}}</td>
+								<tr ng-repeat="photo in main.photoList | orderBy:sortType:sortReverse | filter:searchFish  | limitTo:main.pageSize">
+									<td>{{photo.id}}</td>
+									<td>{{photo.title}}</td>
+									<td>{{photo.url}}</td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fa fa-cog" aria-hidden="true"></i> <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li>
+													<a href="#"  data-toggle="modal" data-target="#modal-edit-{{photo.id}}"><i class="fa fa-edit" aria-hidden="true"></i>Editar</a>
+							  					</li>
+												<li>
+													<a href="#"  data-toggle="modal" data-target="#modal-remove-{{photo.id}}"><i class="fa fa-trash" aria-hidden="true"></i>Remover</a>
+							  					</li>							  					
+											</ul>
+										</div>	
+										<div ng-include="'views/modal.html'"></div>
+									</td>
 								</tr>
 							</tbody>
-						</table>			
+							</table>			
+						</div>
+						<div paging
+						  page="1" 
+						  page-size="myselect" 
+						  total="20"
+						  paging-action="main.teste('olhai')">
+						</div> 						
 					</div>
 				</div>
 			</div>

@@ -8,32 +8,92 @@
  * Controller of the testeSkyoneApp
  */
 angular.module('testeSkyoneApp')
-.controller('MainCtrl', function ($http, $filter) {
+.controller('MainCtrl', function (TableMethods, settings) {
 
-	var $public = this,
-		$private = {};
+	var $public = this;
+
+	$public.limitPage = settings.limitView(null);
+	$public.photoList = [];
+
+	$public.getDataTable = function() {
+
+	    TableMethods.query({limit : $public.limitPage}, function(data) {
+ 
+        	$public.photoList = data;
+ 
+        });
+	
+	};
+
+	$public.teste = function(i) { console.log(i)};
+
+	$public.newDataTable = function(input, id, index) {
+		
+		var teste = {
+			url: input.newUrl.$modelValue,
+			title: input.newTitle.$modelValue
+		}
+
+		TableMethods.new(teste, function(data) {
+ 	
+ 			if (data.$resolved) {
+ 			
+ 				input.newUrl.$modelValue = '';
+
+ 			}
+
+ 		});
+	
+	};
+
+
+	$public.updateDataTable = function(input, id, index) {
+		
+		var dataInput = settings.normalizeData(input)
+
+	    TableMethods.update({update:id}, dataInput, function(data) {
+ 	
+ 			if (data.$resolved) {
+ 			
+ 				$public.photoList[index].title = data.title;
+ 				$public.photoList[index].url = data.url;
+
+ 			}
+
+ 		});
+	
+	};
 
 	
-	$private.urkRest = 'https://jsonplaceholder.typicode.com/photos/';
-	$public.limitPage = $filter('limitPage')();
 
-	$public.getTable = function() {
+	$public.removeDataTable = function(photo, index) {
 
-	    $http.get($private.urkRest + $public.limitPage).then(function(response) {
-	        
-	        $public.rowCollection = response.data;
-	    
-	    });
+		TableMethods.remove({delete : photo.id}, function(data) {
+ 
+        	if (data.$resolved) {
 
-	};
+        		$public.photoList.splice(index, 1);	
+
+        	} 
+        
+        });
+	
+	};		
 
     $public.viewMore = function (input) {
     	
-    	$public.limitPage = $filter('limitPage')(input);
-    	$public.getTable();
+    	$public.limitPage = settings.limitView(input);
+    	$public.getDataTable();
 
     };
 
-    $public.getTable();
+   	$public.init = function () {
+		
+		$public.getDataTable();  		
+   	
+   	};
+
+   	$public.init();
+ 
 
 });

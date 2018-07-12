@@ -15,9 +15,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
+    'bw.paging',
     'ngTouch'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $qProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -29,4 +30,5 @@ angular
       });
     
     $locationProvider.html5Mode(true);  
+    $qProvider.errorOnUnhandledRejections(false);
   });
