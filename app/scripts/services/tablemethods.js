@@ -10,12 +10,13 @@
 angular.module('testeSkyoneApp')
 .factory('TableMethods', function ($resource) {
 
-    return $resource('http://localhost:3000/photos/:delete/:update/?:limit', { }, {
+    return $resource('http://localhost:3000/photos/:delete/:update/?:page:limit', { }, {
         
         query: { 
             method: 'GET', 
             isArray: true,
-            limit: '@limit'
+            limit: '@limit',
+            page: '@page'
         },
         remove: { 
             method: 'DELETE',

@@ -13,11 +13,23 @@ angular.module('testeSkyoneApp')
 	var $public = this;
 
 	$public.limitPage = settings.limitView(null);
+	$public.currentPage = 1;
 	$public.photoList = [];
+
+
+	$public.controlPage = function(currentPage) { 
+		
+		$public.currentPage = currentPage;
+
+		$public.getDataTable();
+
+	};
 
 	$public.getDataTable = function() {
 
-	    TableMethods.query({limit : $public.limitPage}, function(data) {
+		var teste = '_page='+$public.currentPage;
+
+	    TableMethods.query({limit:$public.limitPage, page:teste }, function(data) {
  
         	$public.photoList = data;
  
@@ -25,16 +37,14 @@ angular.module('testeSkyoneApp')
 	
 	};
 
-	$public.teste = function(i) { console.log(i)};
-
 	$public.newDataTable = function(input, id, index) {
 		
-		var teste = {
+		var dataForm = {
 			url: input.newUrl.$modelValue,
 			title: input.newTitle.$modelValue
 		}
 
-		TableMethods.new(teste, function(data) {
+		TableMethods.new(dataForm, function(data) {
  	
  			if (data.$resolved) {
  			
@@ -45,7 +55,6 @@ angular.module('testeSkyoneApp')
  		});
 	
 	};
-
 
 	$public.updateDataTable = function(input, id, index) {
 		
@@ -63,8 +72,6 @@ angular.module('testeSkyoneApp')
  		});
 	
 	};
-
-	
 
 	$public.removeDataTable = function(photo, index) {
 
@@ -95,5 +102,4 @@ angular.module('testeSkyoneApp')
 
    	$public.init();
  
-
 });

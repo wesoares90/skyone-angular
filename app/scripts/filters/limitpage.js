@@ -12,7 +12,7 @@ angular.module('testeSkyoneApp')
 .filter('limitPage', function () {
 	return function (input) {
 	  
-		var limit = '_limit=';
+		var limit = '&_limit=';
 
 		switch (input) {
 			case null:

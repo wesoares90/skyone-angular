@@ -73,13 +73,25 @@
 								</tr>
 							</tbody>
 							</table>			
+							<div class="text-center">
+								<paging
+									page="1" 
+								    page-size="myselect" 
+								    total="10"
+								    text-first="first"
+								    text-last="last"
+								    text-next="next"
+								    text-prev="prev"
+								    paging-action="main.controlPage(page)"
+								    text-title-first="First hover"
+								    text-title-last="Last hover"
+								    text-title-next="Next hover"
+								    text-title-prev="Prev hover"
+								    show-prev-next="true"
+								    show-first-last="true">
+								</paging> 
+							</div>
 						</div>
-						<div paging
-						  page="1" 
-						  page-size="myselect" 
-						  total="20"
-						  paging-action="main.teste('olhai')">
-						</div> 						
 					</div>
 				</div>
 			</div>
