@@ -1,0 +1,55 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  &.sticky-footer {
+    margin-bottom: 56px;
+  }
+}
+
+ul.dropdown-menu.show {
+  padding: 6px 30px;
+}
+
+body {
+  &.sticky-footer .content-wrapper {
+    min-height: calc(100vh - 56px - 56px);
+  }
+  &.fixed-nav {
+    padding-top: 56px;
+  }
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 56px);
+  padding-top: 1rem;
+}
+
+.new-photo {
+  float: right;
+}
+
+
+.smaller {
+  font-size: 0.7rem;
+}
+
+.o-hidden {
+  overflow: hidden !important;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.controls {
+  margin-top: 5px;
+  margin-bottom: 22px;
+}

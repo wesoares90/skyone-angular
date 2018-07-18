@@ -14,20 +14,18 @@ angular.module('testeSkyoneApp')
 	  
 		var limit = '&_limit=';
 
-		switch (input) {
-			case null:
-				limit  += 20;
-				break;
-			case 'todos':
-				limit = ''
-				break;
-			default:
-				limit  += input;
-				break;
-		};
+		if (input === null) {
+
+			limit  += 20;
+
+		} else {
+
+			limit  += input;
+
+		}
 
 		return  limit;
 
-
 	};
+	
 });

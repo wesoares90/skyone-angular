@@ -11,7 +11,15 @@ angular.module('testeSkyoneApp')
   .service('settings', function ($filter) {
     
     var $public = this;
-    
+
+    $public.listView = function(){
+
+        var list = [20,40,80,100,200,300,400,500];
+
+        return list;
+
+    };
+
   	$public.limitView = function(input){
 
   		var number = $filter('limitPage')(input);

@@ -3,23 +3,29 @@
 	<div class="card mb-3">
 		<div class="card-header">
 			<i class="fa fa-table"></i> Data Table Example
-			<button class="btn btn-primary new-photo" data-toggle="modal" data-target="#modal-new" type="button" ><i class="fa fa-edit" aria-hidden="true"></i> New photo</button>
+			<button class="btn btn-primary new-photo" data-toggle="modal" data-target="#modal-new" type="button" ><i class="fa fa-edit" aria-hidden="true" id="newPhoto"></i> New photo</button>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
 				<div class="container-fluid">
 					<div class="row controls">
-						<div class="col-md-9">
-							<input type="search" placeholder="Search:" class="form-control" ng-model="searchFish">
+						<div class="col-md-9 input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">Search:</span>
+							</div>							
+							<input type="search" id="search" class="form-control" ng-model="searchFish">
 						</div>
-						<div class="col-md-3">
-							<select ng-model="myselect" class="form-control" ng-change="main.viewMore(myselect)">
-								<option value="20" selected="selected">20</option>
-								<option value="40">40</option>
-								<option value="85">80</option>
-								<option value="160">160</option>
-								<option value="todos">Todos</option>
-							</select>
+						<div class="col-md-3 input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">Limit:</span>
+							</div>
+							<select  
+								class="form-control" 
+								ng-model="limitView" 
+								ng-change="main.viewMore(limitView)" 
+								ng-init="limitView=main.listView[0]" 
+								ng-options="x for x in main.listView">
+							</select>								
 						</div>
 					</div>										
 					<div class="row">					
@@ -72,12 +78,12 @@
 									</td>
 								</tr>
 							</tbody>
-							</table>			
+							</table>	
 							<div class="text-center">
 								<paging
 									page="1" 
-								    page-size="myselect" 
-								    total="10"
+								    page-size="limitView" 
+								    total="5000" 
 								    text-first="first"
 								    text-last="last"
 								    text-next="next"

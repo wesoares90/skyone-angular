@@ -31,6 +31,13 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+    protractor: {
+      options: {
+        configFile: 'test/protractor.conf.js'
+      },
+      run: {}
+    },    
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -117,19 +124,6 @@ module.exports = function (grunt) {
         }
       }
     },
-
-    json_server: {
-      stub: {
-          options: {
-              options: {
-                  port: 13337,
-                  hostname: 'localhost',
-                  db: 'api/photos.json'
-              }            
-          }
-      }
-    },
-
 
     // Make sure there are no obvious mistakes
     jshint: {
@@ -480,6 +474,12 @@ module.exports = function (grunt) {
 
   // load npm tasks
   //grunt.loadNpmTasks('grunt-json-server');
+  grunt.loadNpmTasks('grunt-protractor-runner');
+
+  // Integration tests
+  grunt.registerTask('aut', [
+    'protractor:run'
+  ]);
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     

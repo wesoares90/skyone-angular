@@ -65,14 +65,14 @@
                 <form name="form" novalidate>
                     <div class="form-group">
                         <label>Title</label>
-                        <input type="text" class="form-control" name="newTitle" ng-model="newTitle"   ng-class="!form.newTitle.$valid ? 'is-invalid' : 'is-valid'" required>
+                        <input id="titleInput" type="text" class="form-control" name="newTitle" ng-model="newTitle"   ng-class="!form.newTitle.$valid ? 'is-invalid' : 'is-valid'" required>
                         <div ng-class="!form.newTitle.$valid ? 'invalid-feedback' : ''" ng-show="!form.newTitle.$valid">
                             Please type a Title.
                         </div>                    
                     </div>
                     <div class="form-group">
                         <label>Url</label>
-                        <input type="text" class="form-control" name="newUrl" ng-model="newUrl" ng-class="!form.newUrl.$valid ? 'is-invalid' : 'is-valid'" required>
+                        <input id="urlInput" type="text" class="form-control" name="newUrl" ng-model="newUrl" ng-class="!form.newUrl.$valid ? 'is-invalid' : 'is-valid'" required>
                         <div ng-class="!form.newUrl.$valid ? 'invalid-feedback' : ''" ng-show="!form.newUrl.$valid">
                             Please type a Url.
                         </div>   
@@ -81,7 +81,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" ng-disabled="!form.newUrl.$valid || !form.newTitle.$valid" type="button" data-dismiss="modal" ng-click="main.newDataTable(form)">Confirm</button>
+                <button class="btn btn-primary" id="confirmBtn" ng-disabled="!form.newUrl.$valid || !form.newTitle.$valid" type="button" data-dismiss="modal" ng-click="main.newDataTable(form)">Confirm</button>
             </div>
         </div>
     </div>

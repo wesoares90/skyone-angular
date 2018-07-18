@@ -34,9 +34,37 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
-      'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
+    // Which plugins to enable
+    plugins: [
+      'karma-phantomjs-launcher',
+      'karma-jasmine',
+      'karma-coverage',
+      'karma-chrome-launcher',
+      'karma-ng-html2js-preprocessor'
+    ],
+
+    preprocessors: {
+      'app/**/**.js': 'coverage',
+      'app/views/*.html': 'ng-html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/'
+    },
+
+    // coverage reporter generates the coverage
+    reporters: ['dots', 'coverage'],
+
+    // optionally, configure the reporter
+    coverageReporter: {
+      dir : './coverage/',
+      reporters: [
+        { type: 'html', subdir: 'report-html'},
+        { type: 'cobertura', subdir: '.', file: 'cobertura.xml' },
+      ]
+    },
 
     // list of files / patterns to exclude
     exclude: [
@@ -55,12 +83,6 @@ module.exports = function(config) {
     // - IE (only Windows)
     browsers: [
       'PhantomJS'
-    ],
-
-    // Which plugins to enable
-    plugins: [
-      'karma-phantomjs-launcher',
-      'karma-jasmine'
     ],
 
     // Continuous Integration mode
