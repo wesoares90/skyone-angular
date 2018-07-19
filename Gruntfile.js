@@ -25,6 +25,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var modRewrite = require('connect-modrewrite');  
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -87,6 +89,10 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
+              modRewrite([
+                '(.*)\/skyone-angular\/ /$1',
+                '^[^\\.]*$ /index.html [L]'
+              ]),            
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -106,6 +112,10 @@ module.exports = function (grunt) {
           port: 9001,
           middleware: function (connect) {
             return [
+              modRewrite([
+                '(.*)\/skyone-angular\/ /$1',
+                '^[^\\.]*$ /index.html [L]'
+              ]),             
               connect.static('.tmp'),
               connect.static('test'),
               connect().use(
@@ -305,6 +315,13 @@ module.exports = function (grunt) {
           '<%= yeoman.dist %>/styles'
         ],
         patterns: {
+          css: [
+            [/(\/?images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'god help me', function(match) {
+              
+              return match.replace(/(\/?images\/)/g, '/skyone-angular/images/');
+              
+            }]
+          ],          
           js: [[/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']]
         }
       }

@@ -18,7 +18,7 @@ angular
     'bw.paging',
     'ngTouch'
   ])
-  .config(function ($routeProvider, $locationProvider, $qProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -29,6 +29,7 @@ angular
         redirectTo: '/'
       });
     
-    $locationProvider.html5Mode(true);  
-    $qProvider.errorOnUnhandledRejections(false);
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
+    $httpProvider.defaults.withCredentials = true;
   });
