@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="58"  lines-covered="39"  line-rate="0.6724"  branches-valid="8"  branches-covered="2"  branch-rate="0.25"  timestamp="1531880636174" complexity="0" version="0.1">
+<coverage lines-valid="58"  lines-covered="39"  line-rate="0.6724"  branches-valid="8"  branches-covered="2"  branch-rate="0.25"  timestamp="1531967024434" complexity="0" version="0.1">
 <sources>
 	<source>/home/cin_wsoares/projetos/public/pessoal/skyone-angular</source>
 </sources>

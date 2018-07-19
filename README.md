@@ -3,29 +3,35 @@
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.16.0.
 
-## Install/Skyone
-Na raiz do projeto executar os comandos abaixo:
-`npm install`
-`bower install`
+- angular 1.7.2
+- grunt ^0.4.5
+- bower 
+- bootstrap 4
+- SASS
 
-## Install/Run json-server
+## Install skyone-angular
+	
+	`npm install`
+	`bower install`
 
-Fiz isso até inserir o json-server como task do grunt
+## Install json-server
 
-instalar o json-server `sudo npm install -g json-server`
-Na raiz do projeto executar `json-server --watch photos.json`
+- Install json-server 
+	`sudo npm install -g json-server`
+
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+- Run json-server 
+	`json-server --watch photos.json`
+
+- Run skyone-angular
+	`grunt serve`
 
 ## Testing automated
 
-para rodar o teste automatizado é necessário estar rodando o projeto skyone e json-serve ATÉ CORRIGIR O GRUNT
-
-Running `grunt aut` will run the unit tests with Protractor and Cucumber.
-
+- Running `grunt aut` will run the unit tests with Protractor and Cucumber.
 
 ## Testing Unit
 
-Running `grunt test` will run the unit tests with karma.
+- Running `grunt test` will run the unit tests with karma.
