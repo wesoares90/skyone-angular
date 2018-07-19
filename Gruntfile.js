@@ -495,11 +495,6 @@ module.exports = function (grunt) {
 
   // Integration tests
   grunt.registerTask('aut', [
-    'clean:server',
-    'wiredep',
-    'concurrent:server',
-    'postcss:server',
-    'connect:livereload',
     'protractor:run'
   ]);
 

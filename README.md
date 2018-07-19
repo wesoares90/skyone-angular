@@ -9,21 +9,25 @@ version 0.16.0.
 - bootstrap 4
 - SASS
 
+You will need to first install Ruby and Compass:
+- Install Ruby by downloading from [here](http://rubyinstaller.org/downloads/) or use Homebrew
+- Install the compass gem:
+```
+gem install compass
+```
+
+Json was created and hosted on herokuapp
+- https://json-photos.herokuapp.com/photos
+
+GitPage [here](https://wesoares90.github.io/skyone-angular/)
+
+
 ## Install skyone-angular
 	
 	`npm install`
 	`bower install`
 
-## Install json-server
-
-- Install json-server 
-	`sudo npm install -g json-server`
-
-
-## Build & development
-
-- Run json-server 
-	`json-server --watch photos.json`
+## Development
 
 - Run skyone-angular
 	`grunt serve`

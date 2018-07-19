@@ -6,7 +6,7 @@
 //protractor.conf.js
 exports.config = {
   
-  baseUrl: 'http://localhost:9000/',
+  baseUrl: 'https://wesoares90.github.io/skyone-angular/',
   chromeOnly: true,
   directConnect: true,
   getPageTimeout: 60000,

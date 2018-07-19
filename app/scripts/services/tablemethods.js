@@ -10,7 +10,7 @@
 angular.module('testeSkyoneApp')
 .factory('TableMethods', function ($resource) {
 
-    return $resource('http://localhost:3000/photos/:delete/:update/?:page:limit', { }, {
+    return $resource('https://json-photos.herokuapp.com/photos/:delete/:update/?:page:limit', { }, {
         
         query: { 
             method: 'GET', 
