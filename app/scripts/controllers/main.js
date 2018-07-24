@@ -13,6 +13,7 @@ angular.module('testeSkyoneApp')
 	var $public = this;
 
 	$public.listView = settings.listView();
+	$public.loadView = true;
 	$public.limitPage = settings.limitView(null);
 	$public.currentPage = 1;
 	$public.photoList = [];
@@ -25,6 +26,7 @@ angular.module('testeSkyoneApp')
 	    TableMethods.query({limit:$public.limitPage, page:_page }, function(data) {
  
 	    	$public.photoList = data;
+	    	$public.loadView = false;
  
         });
 	

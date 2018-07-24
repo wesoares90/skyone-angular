@@ -1,6 +1,9 @@
 <div class="container-fluid">
 	<!-- Example DataTables Card-->
-	<div class="card mb-3">
+	<div class="loader" ng-show="main.loadView">
+		<div></div>
+	</div>
+	<div class="card mb-3" ng-hide="main.loadView">
 		<div class="card-header">
 			<i class="fa fa-table"></i> Data Table Example
 			<button class="btn btn-primary new-photo" data-toggle="modal" data-target="#modal-new" type="button" ><i class="fa fa-edit" aria-hidden="true" id="newPhoto"></i> New photo</button>
